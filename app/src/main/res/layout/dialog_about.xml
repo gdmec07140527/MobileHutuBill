@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关于应用：\n版本：1.0\n本应用由HOW2J.CN站长上的JAVASE实践项目“一本糊涂账”二次开发而成。新手初学，还有许多不足和漏洞，仅用于JAVA初学者学习交流使用，请勿用于商业用途。如有问题请在群内@我。\n参考资料：" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://how2j.cn/k/hutubill/hutubill-tutorials/710.html" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://www.runoob.com/w3cnote/android-tutorial-fragment-demo4.html" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://www.jianshu.com/p/84df2466e26a?nomobile=yes" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http://blog.csdn.net/qingdaohaoyunpeng/article/details/51111877" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://github.com/lecho/hellocharts-android/tree/master/hellocharts-library" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用提示：\n备份数据库默认将文件备份到SD卡根目录\n恢复数据库默认从SD卡根目录读取，请提前准备好文件。" />
+</LinearLayout>

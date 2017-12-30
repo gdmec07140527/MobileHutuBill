@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RadioGroup
+        android:id="@+id/rg_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/bg_white"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RadioButton
+            android:id="@+id/rb_overview"
+            style="@style/bottom_menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/bottom_overview_channel"
+            android:text="@string/tab_menu_xiaofeiyilan" />
+
+        <RadioButton
+            android:id="@+id/rb_record"
+            style="@style/bottom_menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/bottom_record_message"
+            android:text="@string/tab_menu_jiyibi" />
+
+        <RadioButton
+            android:id="@+id/rb_category"
+            style="@style/bottom_menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/bottom_category_better"
+            android:text="@string/tab_menu_xiaofeifenlei" />
+
+        <RadioButton
+            android:id="@+id/rb_charts"
+            style="@style/bottom_menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/bottom_charts_setting"
+            android:text="@string/tab_menu_xiaofeibaobiao" />
+
+    </RadioGroup>
+</LinearLayout>

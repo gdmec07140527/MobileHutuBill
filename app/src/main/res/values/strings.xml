@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">掌上糊涂账</string>
+    <string name="tab_menu_xiaofeiyilan">消费一览</string>
+    <string name="tab_menu_jiyibi">记一笔</string>
+    <string name="tab_menu_xiaofeifenlei">消费分类</string>
+    <string name="tab_menu_xiaofeibaobiao">月消费报表</string>
+</resources>
