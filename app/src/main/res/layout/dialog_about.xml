@@ -8,7 +8,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="关于应用：\n版本：1.0\n本应用由HOW2J.CN站长上的JAVASE实践项目“一本糊涂账”二次开发而成。新手初学，还有许多不足和漏洞，仅用于JAVA初学者学习交流使用，请勿用于商业用途。如有问题请在群内@我。\n参考资料：" />
+        android:text="关于应用：\n版本：1.0\n本应用是仿照HOW2J.CN站长上的JAVASE实践项目“一本糊涂账”做的。新手初学，还有许多不足和漏洞，仅用于JAVA初学者学习交流使用，请勿用于商业用途。如有问题请在群内@我。\n参考资料：" />
 
     <TextView
         android:id="@+id/textView3"

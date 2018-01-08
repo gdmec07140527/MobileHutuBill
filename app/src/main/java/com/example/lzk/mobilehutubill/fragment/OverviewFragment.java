@@ -23,6 +23,7 @@ import com.example.lzk.mobilehutubill.bean.Config;
 import com.example.lzk.mobilehutubill.bean.Record;
 import com.example.lzk.mobilehutubill.service.ConfigService;
 import com.example.lzk.mobilehutubill.service.RecordService;
+import com.example.lzk.mobilehutubill.util.ArithUtil;
 import com.example.lzk.mobilehutubill.util.DateUtil;
 import com.example.lzk.mobilehutubill.util.DoughnutView;
 
@@ -36,7 +37,6 @@ public class OverviewFragment extends Fragment {
     private TextView jinrixiaofei, benyuexiaofei, benyueyusuan, rijunxiaofei, benyueshengyu, rijunkeyong, juliyuemo;
     private RecordService recordService;
     private ConfigService configService;
-    private DecimalFormat df;
     private double monthSpend = 0;//本月消费
     private double todaySpend = 0;//今日消费
     private double avgSpendPerDay = 0;//日均消费
@@ -77,13 +77,13 @@ public class OverviewFragment extends Fragment {
         jinrixiaofei.setText(todaySpend + "");
         benyuexiaofei.setText(monthSpend + "");
         benyueyusuan.setText(monthBudget + "");
-        rijunxiaofei.setText(df.format(avgSpendPerDay) + "");
+        rijunxiaofei.setText(avgSpendPerDay + "");
         if (monthAvailable<0){
             benyueshengyu.setText("超支"+Math.abs(monthAvailable));
             rijunkeyong.setText("0.00");
         }else if (monthAvailable>=0){
             benyueshengyu.setText(monthAvailable + "");
-            rijunkeyong.setText(df.format(dayAvgAvailable) + "");
+            rijunkeyong.setText(dayAvgAvailable + "");
         }
         juliyuemo.setText(monthLeftDay + "天");
         doughnutView.setValue((float) usagePercentage);
@@ -110,8 +110,6 @@ public class OverviewFragment extends Fragment {
         doughnutView = (DoughnutView) view.findViewById(R.id.doughnutView);
         recordService = new RecordService(getActivity());
         configService = new ConfigService(getActivity());
-        df = new DecimalFormat("0.00");//格式化小数
-
     }
 
     private void cleandata() {
@@ -137,30 +135,40 @@ public class OverviewFragment extends Fragment {
         // 统计今日消费
         if (toDayRecords != null) {
             for (Record record : toDayRecords) {
-                todaySpend += record.getSpend();
+                todaySpend =ArithUtil.add(todaySpend,record.getSpend());
             }
             //todaySpend = todaySpendtemp;
         }
         // 统计本月消费
         if (thisMonthRecords != null) {
             for (Record record : thisMonthRecords) {
-                monthSpend += record.getSpend();
+                monthSpend =ArithUtil.add(monthSpend,record.getSpend());
             }
             //monthSpend = monthSpendtemp;
         }
 
         // 计算日均消费
-        avgSpendPerDay = monthSpend / thisMonthTotalDay;
+        try {
+            avgSpendPerDay=ArithUtil.div(monthSpend,thisMonthTotalDay,2);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         // 计算本月剩余
-        monthAvailable = monthBudget - monthSpend;
-
+        monthAvailable=ArithUtil.sub(monthBudget,monthSpend);
         // 计算日均可用
-        dayAvgAvailable = monthAvailable / monthLeftDay;
-
+        try {
+            dayAvgAvailable=ArithUtil.div(monthAvailable,monthLeftDay,2);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         // 计算使用比例
         if (monthBudget != 0) {
-            usagePercentage = (monthSpend / monthBudget*360);
+            try {
+                usagePercentage=ArithUtil.div(monthSpend*360,monthBudget,3);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         Message msg = Message.obtain();  //从全局池中返回一个message实例，避免多次创建message（如new Message）
         msg.what = 1;   //标志消息的标志

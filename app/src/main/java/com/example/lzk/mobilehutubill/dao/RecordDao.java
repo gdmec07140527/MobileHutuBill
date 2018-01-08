@@ -89,19 +89,19 @@ public class RecordDao {
     public List<Record> queryDataListByCid(int cid) {
         Cursor cursor = mSQLiteDatabase.query(TABLE_NAME, new String[]{KEY_ID, KEY_SPEND,KEY_CID,KEY_COMMENT,KEY_DATE},
                 KEY_CID + "=" + cid, null, null, null, null);
-        return ConvertToCategory(cursor);
+        return ConvertToRecord(cursor);
     }
     //查询某个日期下所有数据
     public List<Record> queryDataListByDate(long date) {
         Cursor cursor = mSQLiteDatabase.query(TABLE_NAME, new String[]{KEY_ID, KEY_SPEND,KEY_CID,KEY_COMMENT,KEY_DATE},
                 KEY_DATE + "=" + date, null, null, null, null);
-        return ConvertToCategory(cursor);
+        return ConvertToRecord(cursor);
     }
 
     public List<Record> queryDataListByMonth(long startdate,long enddate) {
         Cursor cursor = mSQLiteDatabase.query(TABLE_NAME, new String[]{KEY_ID, KEY_SPEND,KEY_CID,KEY_COMMENT,KEY_DATE},
                 KEY_DATE + ">" + "="+ startdate+" and "+KEY_DATE + "<" + "="+ enddate, null, null, null, null);
-        return ConvertToCategory(cursor);
+        return ConvertToRecord(cursor);
     }
     public int getCount(int cid) {
         Cursor cursor = mSQLiteDatabase.rawQuery("select count(*)from "+TABLE_NAME+" where "+KEY_CID+" = "+cid+"",null);
@@ -109,7 +109,7 @@ public class RecordDao {
         return cursor.getInt(0);
     }
 
-    private List<Record> ConvertToCategory(Cursor cursor) {
+    private List<Record> ConvertToRecord(Cursor cursor) {
         int ResultCounts = cursor.getCount();
         if (ResultCounts == 0 || !cursor.moveToFirst()) {
             return null;
